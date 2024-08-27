@@ -35,4 +35,19 @@ spec:
   containers:
     - name: nginx
       image: docker.io/rkalluru/debug
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-06-np
+spec:
+  type: NodePort
+  selector:
+    appName: nginx
+    example: service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 
