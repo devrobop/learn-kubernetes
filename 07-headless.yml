@@ -3,17 +3,45 @@ kind: Deployment
 metadata:
   name: deploy-07
 labels:
-  appName: nginx
+  app: nginx
 spec:
   replicas: 2
   selector:
     matchLabels:
-    appName: nginx
+    app: nginx
   template:
     metadata:
       labels:
-        appName: nginx
+        app: nginx
     spec:
       containers:
       - name: nginx
         image: docker.io/rkalluru/nginx:hostname-print
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-07
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-07-headless
+spec:
+  clusterIP: None
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
