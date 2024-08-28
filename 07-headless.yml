@@ -1,22 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-06
+  name: deploy-07
 labels:
   appName: nginx
-  type: deploy
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
     appName: nginx
-    example: deploy
   template:
     metadata:
       labels:
         appName: nginx
-        type: deploy
     spec:
       containers:
       - name: nginx
-        image: docker.io/nginx:1.24
+        image: docker.io/rkalluru/nginx:hostname-print
