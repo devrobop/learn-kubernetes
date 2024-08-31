@@ -12,7 +12,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deploy-01
-  Namespace: psa-pss-test-ns
+  namespace: psa-pss-test-ns
   labels:
     app: nginx
 spec:
