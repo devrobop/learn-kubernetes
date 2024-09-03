@@ -8,4 +8,8 @@ spec:
   containers:
   - name: nginx
     image: nginx
-  nodeName: ip-192-168-23-200.ec2.internal
+  #  nodeName: ip-192-168-84-247.ec2.internal
+  tolerations:
+  - key: "appTypes"
+    operator: "Exists"
+    effect: "NoSchedule"
